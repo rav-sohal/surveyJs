@@ -1,0 +1,102 @@
+body {
+  font-family: 'Roboto', sans-serif;  
+  background-color: #91a6b4;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 100px;
+}
+
+.welcome {
+  font-weight: bold;
+  font-size: 32px;
+}
+@media only screen and (max-width: 600px) {
+  body {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.text {
+  font-size: 16px!important;
+  line-height: 20px!important;
+  margin-top: 15px;
+  color: #4c6272;
+}
+
+.nhs-logo {
+  height: auto;
+  width: 75px
+}
+#header {
+  background-color:#005eb8;
+  padding: 15px;
+}
+
+.app h1,
+h2,
+h3 {
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+}
+
+#saveButton,
+#clearButton {
+  width: 100%;
+  display: block;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+}
+
+.saveUl {
+  background-color: #91a6b4;
+  height: 100vh;
+  font-size: 18px;
+  padding: 15px 15px 15px 35px;
+  line-height: 26px;
+}
+
+.start-container {
+  background-color: #ffffff;
+  width: 100%;
+}
+
+#result {
+  /* background-color: coral; */
+  font-size: 32px;
+  height: 40px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Quiz CSS */
+
+#main {
+  padding: 15px;
+  background-color: #ffffff;
+  font-size: 28px;
+}
+
+button {
+  height: 35px;
+  border-radius: 20px;
+  border: 0px;
+  width: 150px;
+  font-size: 16px;
+}
+
+#survey-container {
+  background-color: #ffffff;
+  padding-bottom: 5px;
+}
+
+#answer > #answer2 {
+  float: left;
+  margin-right: 10px;
+}
+
+.answers {
+  margin: 15px;
+}
