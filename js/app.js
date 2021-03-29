@@ -75,20 +75,6 @@ const calcScorePromise = number => {
   return number;
 };
 
-// const calcScore = () => {
-//   totalScore = yesCount + noCount;
-//   if (totalScore === questionClass.length) {
-//     if (yesCount > 2) {
-//       mainDiv.innerHTML = 'Complete Yes More';
-//     } else {
-//       mainDiv.innerHTML = 'Complete No More';
-//     }
-//     yesBtn.style.display = 'none';
-//     noBtn.style.display = 'none';
-//   }
-//   return totalScore;
-// };
-
 const clickEv = () => {
   if (startBtn) {
     startBtn.addEventListener ('click', () => {
