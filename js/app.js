@@ -37,7 +37,7 @@ if (mainDiv) {
 header.innerHTML = `<img src=${image} class="nhs-logo">`;
 
 const calcScorePromise = number => {
-  let promScore = new Promise ((resolve, reject) => {
+  return new Promise ((resolve, reject) => {
     number = yesCount + noCount;
     if (number === questionClass.length) {
       resolve (number);
@@ -45,49 +45,33 @@ const calcScorePromise = number => {
       reject ('Total score not calculated, questions not complete');
     }
   });
-
-  promScore
-    .then (val => {
-      if (val === questionClass.length) {
-        if (yesCount > 2 && noCount < 2) {
-          mainDiv.innerHTML = `<span>Thank you for completing this survey - Yes More</span><br /><div class="text">Get the latest advice about coronavirus, including information about symptoms, self-isolation and testing.
-          </div>`;
-        } else {
-          mainDiv.innerHTML = `<span>Thank you for completing this survey - No More</span><br /><div class="text">Get the latest advice about coronavirus, including information about symptoms, self-isolation and testing.
-          </div>`;
-        }
-        yesBtn.style.display = 'none';
-        noBtn.style.display = 'none';
-      }
-      console.log (
-        'Success - Total questions answered =',
-        val,
-        'no count =',
-        noCount,
-        'yes count =',
-        yesCount
-      );
-      return val;
-    })
-    .catch (val => {
-      console.log (val);
-    });
-  return number;
 };
 
-// const calcScore = () => {
-//   totalScore = yesCount + noCount;
-//   if (totalScore === questionClass.length) {
-//     if (yesCount > 2) {
-//       mainDiv.innerHTML = 'Complete Yes More';
-//     } else {
-//       mainDiv.innerHTML = 'Complete No More';
-//     }
-//     yesBtn.style.display = 'none';
-//     noBtn.style.display = 'none';
-//   }
-//   return totalScore;
-// };
+async function funcAsync () {
+  try {
+    await calcScorePromise (totalScore);
+      if (yesCount > 2 && noCount < 2) {
+        mainDiv.innerHTML = `<span>Thank you for completing this survey - Yes More</span><br /><div class="text">Get the latest advice about coronavirus, including information about symptoms, self-isolation and testing.
+        </div>`;
+      } else {
+        mainDiv.innerHTML = `<span>Thank you for completing this survey - No More</span><br /><div class="text">Get the latest advice about coronavirus, including information about symptoms, self-isolation and testing.
+        </div>`;
+      }
+      yesBtn.style.display = 'none';
+      noBtn.style.display = 'none';
+    
+    console.log (
+      'Success - Total questions answered =',
+      totalScore,
+      'no count =',
+      noCount,
+      'yes count =',
+      yesCount
+    );
+  } catch (error) {
+    console.log (error);
+  }
+}
 
 const clickEv = () => {
   if (startBtn) {
@@ -117,7 +101,9 @@ const clickEv = () => {
       }
       yesCount++;
       i++;
-      calcScorePromise (totalScore);
+      if (i == questionClass.length + 1) {
+        funcAsync();
+      }
     });
 
     noBtn.addEventListener ('click', () => {
@@ -130,8 +116,10 @@ const clickEv = () => {
       }
       noCount++;
       i++;
-      calcScorePromise (totalScore);
-    });
+      if (i == questionClass.length +1) {
+        funcAsync();
+        }
+      });
   }
 };
 
